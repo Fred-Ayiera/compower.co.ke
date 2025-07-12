@@ -1086,7 +1086,7 @@
     <header>
         <div class="container header-container">
             <div class="logo-container">
-                <img src="https://via.placeholder.com/150" alt="Compower Society Logo" class="logo">
+                <img src="COMPOWERSOCIETY LOGO.jpg" alt="Compower Society Logo" class="logo" id="websiteLogo">
                 <div class="logo-text">
                     <h1>Compower Society</h1>
                     <p>Building Hope one act at a time</p>
@@ -1097,21 +1097,21 @@
             </button>
             <nav>
                 <ul id="mainMenu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#collaborations">Collaborations</a></li>
-                    <li><a href="#donations">Donations</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                              <li><a href="#home">Home</a></li>
+                              <li><a href="#collaborations">Collaborations</a></li>
+                              <li><a href="#donations">Donations</a></li>
+                              <li><a href="#events">Events</a></li>
+                              <li><a href="#about">About Us</a></li>
+                              <li><a href="#contact">Contact Us</a></li>
                     <li class="admin-menu-item">
                         <a href="#">Admin <i class="fas fa-caret-down"></i></a>
                         <div class="admin-submenu">
                             <a href="#" id="loginBtn">Login</a>
-                            <a href="#" id="changeLogoBtn">Change Logo</a>
-                            <a href="#" id="addEventBtn">Manage Events</a>
-                            <a href="#" id="manageLeadersBtn">Manage Leaders</a>
-                            <a href="#" id="addDocumentariesBtn">Add Documentaries</a>
-                            <a href="#" id="addEventPhotosBtn">Add Event Photos</a>
+                            <a href="#" id="changeLogoBtn" class="admin-option" style="display: none;">Change Logo</a>
+                            <a href="#" id="addEventBtn" class="admin-option" style="display: none;">Manage Events</a>
+                            <a href="#" id="manageLeadersBtn" class="admin-option" style="display: none;">Manage Leaders</a>
+                            <a href="#" id="addDocumentariesBtn" class="admin-option" style="display: none;">Add Documentaries</a>
+                            <a href="#" id="addEventPhotosBtn" class="admin-option" style="display: none;">Add Event Photos</a>
                         </div>
                     </li>
                 </ul>
@@ -1182,7 +1182,7 @@
             <div class="section-title">
                 <h2>Our Core Initiatives</h2>
             </div>
-            <div class="initiatives-container">
+            <div class="initiatives-container" id="initiativesContainer">
                 <div class="initiative-card">
                     <div class="initiative-img">
                         <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pad Drive Initiative">
@@ -1286,7 +1286,7 @@
             <div class="section-title">
                 <h2>Upcoming Events</h2>
             </div>
-            <div class="events-container">
+            <div class="events-container" id="eventsContainer">
                 <div class="event-card">
                     <div class="event-date">
                         July 25, 2023
@@ -1342,7 +1342,7 @@
             <div class="section-title">
                 <h2>Our Leadership Team</h2>
             </div>
-            <div class="leaders-container">
+            <div class="leaders-container" id="leadersContainer">
                 <div class="leader-card">
                     <div class="leader-img">
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="John Doe">
@@ -1423,7 +1423,7 @@
             <div class="section-title">
                 <h2>Our Documentaries</h2>
             </div>
-            <div class="documentaries-container">
+            <div class="documentaries-container" id="documentariesContainer">
                 <div class="video-card">
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -1452,7 +1452,7 @@
             <div class="section-title">
                 <h2>Our Partners & Sponsors</h2>
             </div>
-            <div class="partners-container">
+            <div class="partners-container" id="partnersContainer">
                 <img src="https://via.placeholder.com/150x80" alt="Partner 1" class="partner-logo">
                 <img src="https://via.placeholder.com/150x80" alt="Partner 2" class="partner-logo">
                 <img src="https://via.placeholder.com/150x80" alt="Partner 3" class="partner-logo">
@@ -1628,7 +1628,7 @@
                 <h3>Change Website Logo</h3>
                 <button class="close-admin-form">&times;</button>
             </div>
-            <form>
+            <form id="logoForm">
                 <div class="form-group">
                     <label for="logoUpload">Upload New Logo</label>
                     <input type="file" id="logoUpload" class="form-control" accept="image/*">
@@ -1651,37 +1651,44 @@
                 <h3>Manage Events</h3>
                 <button class="close-admin-form">&times;</button>
             </div>
-            <form>
+            <form id="eventForm">
                 <div class="form-group">
-                    <label>Action</label>
-                    <select class="form-control">
+                    <label for="eventAction">Action</label>
+                    <select class="form-control" id="eventAction">
                         <option value="add">Add New Event</option>
+                        <option value="edit">Edit Existing Event</option>
                         <option value="delete">Delete Existing Event</option>
+                    </select>
+                </div>
+                <div class="form-group" id="eventSelectGroup" style="display: none;">
+                    <label for="existingEvent">Select Event</label>
+                    <select class="form-control" id="existingEvent">
+                        <!-- Events will be populated here -->
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="eventTitle">Event Title</label>
-                    <input type="text" id="eventTitle" class="form-control">
+                    <input type="text" id="eventTitle" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="eventDate">Event Date</label>
-                    <input type="date" id="eventDate" class="form-control">
+                    <input type="date" id="eventDate" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="eventLocation">Location</label>
-                    <input type="text" id="eventLocation" class="form-control">
+                    <input type="text" id="eventLocation" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="eventTime">Time</label>
-                    <input type="text" id="eventTime" class="form-control">
+                    <input type="text" id="eventTime" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="eventDescription">Description</label>
-                    <textarea id="eventDescription" class="form-control"></textarea>
+                    <textarea id="eventDescription" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="eventImage">Event Image</label>
-                    <input type="file" id="eventImage" class="form-control" accept="image/*">
+                    <label for="eventImage">Event Image URL</label>
+                    <input type="url" id="eventImage" class="form-control" placeholder="https://example.com/image.jpg" required>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-cancel close-admin-form">Cancel</button>
@@ -1697,30 +1704,36 @@
                 <h3>Manage Leadership Team</h3>
                 <button class="close-admin-form">&times;</button>
             </div>
-            <form>
+            <form id="leaderForm">
                 <div class="form-group">
-                    <label>Action</label>
-                    <select class="form-control">
+                    <label for="leaderAction">Action</label>
+                    <select class="form-control" id="leaderAction">
                         <option value="add">Add New Leader</option>
                         <option value="edit">Edit Existing Leader</option>
                         <option value="delete">Delete Leader</option>
                     </select>
                 </div>
+                <div class="form-group" id="leaderSelectGroup" style="display: none;">
+                    <label for="existingLeader">Select Leader</label>
+                    <select class="form-control" id="existingLeader">
+                        <!-- Leaders will be populated here -->
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="leaderName">Full Name</label>
-                    <input type="text" id="leaderName" class="form-control">
+                    <input type="text" id="leaderName" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="leaderPosition">Position</label>
-                    <input type="text" id="leaderPosition" class="form-control">
+                    <input type="text" id="leaderPosition" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="leaderBio">Bio/Description</label>
-                    <textarea id="leaderBio" class="form-control"></textarea>
+                    <textarea id="leaderBio" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="leaderImage">Leader Photo</label>
-                    <input type="file" id="leaderImage" class="form-control" accept="image/*">
+                    <label for="leaderImage">Leader Photo URL</label>
+                    <input type="url" id="leaderImage" class="form-control" placeholder="https://example.com/photo.jpg" required>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-cancel close-admin-form">Cancel</button>
@@ -1736,18 +1749,18 @@
                 <h3>Add Documentaries</h3>
                 <button class="close-admin-form">&times;</button>
             </div>
-            <form>
+            <form id="documentaryForm">
                 <div class="form-group">
                     <label for="docTitle">Documentary Title</label>
-                    <input type="text" id="docTitle" class="form-control">
+                    <input type="text" id="docTitle" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="docDescription">Description</label>
-                    <textarea id="docDescription" class="form-control"></textarea>
+                    <textarea id="docDescription" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="docUrl">YouTube Video URL</label>
-                    <input type="url" id="docUrl" class="form-control" placeholder="https://www.youtube.com/embed/...">
+                    <input type="url" id="docUrl" class="form-control" placeholder="https://www.youtube.com/embed/..." required>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-cancel close-admin-form">Cancel</button>
@@ -1763,19 +1776,17 @@
                 <h3>Add Event Photos</h3>
                 <button class="close-admin-form">&times;</button>
             </div>
-            <form>
+            <form id="eventPhotosForm">
                 <div class="form-group">
                     <label for="photoEvent">Select Event</label>
-                    <select id="photoEvent" class="form-control">
+                    <select id="photoEvent" class="form-control" required>
                         <option value="">-- Select Event --</option>
-                        <option value="1">Community Clean-up Day</option>
-                        <option value="2">Back to School Drive</option>
-                        <option value="3">Youth Empowerment Workshop</option>
+                        <!-- Events will be populated here -->
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="eventPhotos">Upload Photos</label>
-                    <input type="file" id="eventPhotos" class="form-control" accept="image/*" multiple>
+                    <label for="photoUrl">Photo URL</label>
+                    <input type="url" id="photoUrl" class="form-control" placeholder="https://example.com/photo.jpg" required>
                 </div>
                 <div class="form-group">
                     <label for="photoCaption">Caption/Description</label>
@@ -1783,7 +1794,7 @@
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-cancel close-admin-form">Cancel</button>
-                    <button type="submit" class="btn btn-submit">Upload Photos</button>
+                    <button type="submit" class="btn btn-submit">Upload Photo</button>
                 </div>
             </form>
         </div>
@@ -1863,11 +1874,13 @@
         document.getElementById('addEventBtn').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('addEventForm').classList.add('active');
+            populateEventDropdowns();
         });
 
         document.getElementById('manageLeadersBtn').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('manageLeadersForm').classList.add('active');
+            populateLeaderDropdowns();
         });
 
         document.getElementById('addDocumentariesBtn').addEventListener('click', function(e) {
@@ -1878,6 +1891,7 @@
         document.getElementById('addEventPhotosBtn').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('addEventPhotosForm').classList.add('active');
+            populateEventDropdowns();
         });
 
         // Close Admin Forms
@@ -1897,6 +1911,114 @@
             }
         });
 
+        // Initialize website data from localStorage or defaults
+        let websiteData = JSON.parse(localStorage.getItem('compowerWebsiteData')) || {
+            logo: 'https://via.placeholder.com/150',
+            events: [
+                {
+                    id: 1,
+                    title: "Community Clean-up Day",
+                    date: "2023-07-25",
+                    location: "Nairobi City Park",
+                    time: "8:00 AM - 2:00 PM",
+                    description: "Join us for a day of cleaning and beautifying our local community spaces. All volunteers welcome!",
+                    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 2,
+                    title: "Back to School Drive",
+                    date: "2023-08-12",
+                    location: "Various Schools in Kibera",
+                    time: "9:00 AM - 4:00 PM",
+                    description: "Help us provide school supplies to underprivileged children as they prepare for the new term.",
+                    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 3,
+                    title: "Youth Empowerment Workshop",
+                    date: "2023-09-05",
+                    location: "Compower Society HQ",
+                    time: "10:00 AM - 5:00 PM",
+                    description: "A full-day workshop for young people focusing on leadership, career development, and life skills.",
+                    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                }
+            ],
+            leaders: [
+                {
+                    id: 1,
+                    name: "Joseph Kamau",
+                    position: "Founder & Chief Executive Officer",
+                    bio: "Passionate about community development with over 10 years of experience in nonprofit leadership.",
+                    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 2,
+                    name: "Joy Kibaru",
+                    position: "Executive Director",
+                    bio: "Specializes in youth empowerment programs and community engagement strategies.",
+                    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 3,
+                    name: "Fred Ayiera",
+                    position: "Managing Director",
+                    bio: "Ensures financial accountability and transparency in all our operations.",
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 4,
+                    name: "Michelle Mbugua",
+                    position: "Organizing Secretary",
+                    bio: "Leads our outreach and awareness campaigns to maximize our impact.",
+                    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 5,
+                    name: "Susan Njuguna",
+                    position: "Finance Director",
+                    bio: "Oversees day-to-day activities and ensures smooth program implementation.",
+                    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 6,
+                    name: "Eric Githinji",
+                    position: "Chairperson",
+                    bio: "Manages our growing network of volunteers and community partners.",
+                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 7,
+                    name: "Faith Muthoni",
+                    position: "Secretary",
+                    bio: "Develops strategies to secure resources for our programs and initiatives.",
+                    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                }
+            ],
+            documentaries: [
+                {
+                    id: 1,
+                    title: "Impact Stories: Changing Lives in Kibera",
+                    description: "Follow the journey of three families whose lives have been transformed through our programs in Kibera slums.",
+                    url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+                },
+                {
+                    id: 2,
+                    title: "The Pad Drive Initiative",
+                    description: "See how our menstrual health program is keeping girls in school across rural Kenya.",
+                    url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+                }
+            ],
+            eventPhotos: []
+        };
+
+        // Save data to localStorage
+        function saveWebsiteData() {
+            localStorage.setItem('compowerWebsiteData', JSON.stringify(websiteData));
+        }
+
+        // Load logo from saved data
+        document.getElementById('websiteLogo').src = websiteData.logo;
+
         // Admin Login Form Submission
         document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1912,7 +2034,7 @@
                 this.reset();
                 document.getElementById('loginForm').classList.remove('active');
                 
-                // Enable all admin features
+                // Show all admin options
                 document.querySelectorAll('.admin-option').forEach(option => {
                     option.style.display = 'block';
                 });
@@ -1920,6 +2042,319 @@
                 alert('Invalid username or password. Please try again.');
             }
         });
+
+        // Change Logo Form
+        document.getElementById('logoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const logoUrl = document.getElementById('logoUrl').value;
+            
+            if (logoUrl) {
+                websiteData.logo = logoUrl;
+                document.getElementById('websiteLogo').src = logoUrl;
+                saveWebsiteData();
+                alert('Logo updated successfully!');
+                document.getElementById('changeLogoForm').classList.remove('active');
+                this.reset();
+            } else {
+                alert('Please enter a valid image URL');
+            }
+        });
+
+        // Populate event dropdowns
+        function populateEventDropdowns() {
+            const eventSelect = document.getElementById('existingEvent');
+            const photoEventSelect = document.getElementById('photoEvent');
+            
+            // Clear existing options
+            eventSelect.innerHTML = '';
+            photoEventSelect.innerHTML = '<option value="">-- Select Event --</option>';
+            
+            // Add events to dropdowns
+            websiteData.events.forEach(event => {
+                const option = document.createElement('option');
+                option.value = event.id;
+                option.textContent = event.title;
+                eventSelect.appendChild(option.cloneNode(true));
+                photoEventSelect.appendChild(option);
+            });
+        }
+
+        // Populate leader dropdown
+        function populateLeaderDropdowns() {
+            const leaderSelect = document.getElementById('existingLeader');
+            
+            // Clear existing options
+            leaderSelect.innerHTML = '';
+            
+            // Add leaders to dropdown
+            websiteData.leaders.forEach(leader => {
+                const option = document.createElement('option');
+                option.value = leader.id;
+                option.textContent = leader.name;
+                leaderSelect.appendChild(option);
+            });
+        }
+
+        // Toggle event/leader selection dropdowns based on action
+        document.getElementById('eventAction').addEventListener('change', function() {
+            const eventSelectGroup = document.getElementById('eventSelectGroup');
+            if (this.value === 'add') {
+                eventSelectGroup.style.display = 'none';
+                // Reset form for new event
+                document.getElementById('eventTitle').value = '';
+                document.getElementById('eventDate').value = '';
+                document.getElementById('eventLocation').value = '';
+                document.getElementById('eventTime').value = '';
+                document.getElementById('eventDescription').value = '';
+                document.getElementById('eventImage').value = '';
+            } else {
+                eventSelectGroup.style.display = 'block';
+            }
+        });
+
+        document.getElementById('leaderAction').addEventListener('change', function() {
+            const leaderSelectGroup = document.getElementById('leaderSelectGroup');
+            if (this.value === 'add') {
+                leaderSelectGroup.style.display = 'none';
+                // Reset form for new leader
+                document.getElementById('leaderName').value = '';
+                document.getElementById('leaderPosition').value = '';
+                document.getElementById('leaderBio').value = '';
+                document.getElementById('leaderImage').value = '';
+            } else {
+                leaderSelectGroup.style.display = 'block';
+            }
+        });
+
+        // When an existing event is selected, populate the form
+        document.getElementById('existingEvent').addEventListener('change', function() {
+            const eventId = parseInt(this.value);
+            const event = websiteData.events.find(e => e.id === eventId);
+            
+            if (event) {
+                document.getElementById('eventTitle').value = event.title;
+                document.getElementById('eventDate').value = event.date;
+                document.getElementById('eventLocation').value = event.location;
+                document.getElementById('eventTime').value = event.time;
+                document.getElementById('eventDescription').value = event.description;
+                document.getElementById('eventImage').value = event.image;
+            }
+        });
+
+        // When an existing leader is selected, populate the form
+        document.getElementById('existingLeader').addEventListener('change', function() {
+            const leaderId = parseInt(this.value);
+            const leader = websiteData.leaders.find(l => l.id === leaderId);
+            
+            if (leader) {
+                document.getElementById('leaderName').value = leader.name;
+                document.getElementById('leaderPosition').value = leader.position;
+                document.getElementById('leaderBio').value = leader.bio;
+                document.getElementById('leaderImage').value = leader.image;
+            }
+        });
+
+        // Event Form Submission
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const action = document.getElementById('eventAction').value;
+            const eventId = document.getElementById('existingEvent').value ? 
+                parseInt(document.getElementById('existingEvent').value) : 
+                Math.max(0, ...websiteData.events.map(e => e.id)) + 1;
+            
+            const eventData = {
+                id: eventId,
+                title: document.getElementById('eventTitle').value,
+                date: document.getElementById('eventDate').value,
+                location: document.getElementById('eventLocation').value,
+                time: document.getElementById('eventTime').value,
+                description: document.getElementById('eventDescription').value,
+                image: document.getElementById('eventImage').value
+            };
+            
+            if (action === 'add') {
+                websiteData.events.push(eventData);
+            } else if (action === 'edit') {
+                const index = websiteData.events.findIndex(e => e.id === eventId);
+                if (index !== -1) {
+                    websiteData.events[index] = eventData;
+                }
+            } else if (action === 'delete') {
+                websiteData.events = websiteData.events.filter(e => e.id !== eventId);
+            }
+            
+            saveWebsiteData();
+            renderEvents();
+            alert(`Event ${action === 'delete' ? 'deleted' : 'saved'} successfully!`);
+            document.getElementById('addEventForm').classList.remove('active');
+            this.reset();
+        });
+
+        // Leader Form Submission
+        document.getElementById('leaderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const action = document.getElementById('leaderAction').value;
+            const leaderId = document.getElementById('existingLeader').value ? 
+                parseInt(document.getElementById('existingLeader').value) : 
+                Math.max(0, ...websiteData.leaders.map(l => l.id)) + 1;
+            
+            const leaderData = {
+                id: leaderId,
+                name: document.getElementById('leaderName').value,
+                position: document.getElementById('leaderPosition').value,
+                bio: document.getElementById('leaderBio').value,
+                image: document.getElementById('leaderImage').value
+            };
+            
+            if (action === 'add') {
+                websiteData.leaders.push(leaderData);
+            } else if (action === 'edit') {
+                const index = websiteData.leaders.findIndex(l => l.id === leaderId);
+                if (index !== -1) {
+                    websiteData.leaders[index] = leaderData;
+                }
+            } else if (action === 'delete') {
+                websiteData.leaders = websiteData.leaders.filter(l => l.id !== leaderId);
+            }
+            
+            saveWebsiteData();
+            renderLeaders();
+            alert(`Leader ${action === 'delete' ? 'deleted' : 'saved'} successfully!`);
+            document.getElementById('manageLeadersForm').classList.remove('active');
+            this.reset();
+        });
+
+        // Documentary Form Submission
+        document.getElementById('documentaryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const docId = Math.max(0, ...websiteData.documentaries.map(d => d.id)) + 1;
+            
+            const docData = {
+                id: docId,
+                title: document.getElementById('docTitle').value,
+                description: document.getElementById('docDescription').value,
+                url: document.getElementById('docUrl').value
+            };
+            
+            websiteData.documentaries.push(docData);
+            saveWebsiteData();
+            renderDocumentaries();
+            alert('Documentary added successfully!');
+            document.getElementById('addDocumentariesForm').classList.remove('active');
+            this.reset();
+        });
+
+        // Event Photos Form Submission
+        document.getElementById('eventPhotosForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const eventId = parseInt(document.getElementById('photoEvent').value);
+            const photoUrl = document.getElementById('photoUrl').value;
+            const caption = document.getElementById('photoCaption').value;
+            
+            const event = websiteData.events.find(e => e.id === eventId);
+            if (event) {
+                if (!event.photos) {
+                    event.photos = [];
+                }
+                
+                event.photos.push({
+                    url: photoUrl,
+                    caption: caption
+                });
+                
+                saveWebsiteData();
+                alert('Photo added to event successfully!');
+                document.getElementById('addEventPhotosForm').classList.remove('active');
+                this.reset();
+            } else {
+                alert('Please select a valid event');
+            }
+        });
+
+        // Render events on the page
+        function renderEvents() {
+            const eventsContainer = document.getElementById('eventsContainer');
+            eventsContainer.innerHTML = '';
+            
+            websiteData.events.forEach(event => {
+                const eventCard = document.createElement('div');
+                eventCard.className = 'event-card';
+                eventCard.innerHTML = `
+                    <div class="event-date">
+                        ${formatDate(event.date)}
+                    </div>
+                    <div class="event-img">
+                        <img src="${event.image}" alt="${event.title}">
+                    </div>
+                    <div class="event-info">
+                        <h3>${event.title}</h3>
+                        <p>${event.description}</p>
+                        <p><strong>Location:</strong> ${event.location}</p>
+                        <p><strong>Time:</strong> ${event.time}</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                `;
+                eventsContainer.appendChild(eventCard);
+            });
+        }
+
+        // Render leaders on the page
+        function renderLeaders() {
+            const leadersContainer = document.getElementById('leadersContainer');
+            leadersContainer.innerHTML = '';
+            
+            websiteData.leaders.forEach(leader => {
+                const leaderCard = document.createElement('div');
+                leaderCard.className = 'leader-card';
+                leaderCard.innerHTML = `
+                    <div class="leader-img">
+                        <img src="${leader.image}" alt="${leader.name}">
+                    </div>
+                    <div class="leader-info">
+                        <h3>${leader.name}</h3>
+                        <p>${leader.position}</p>
+                        <p>${leader.bio}</p>
+                    </div>
+                `;
+                leadersContainer.appendChild(leaderCard);
+            });
+        }
+
+        // Render documentaries on the page
+        function renderDocumentaries() {
+            const documentariesContainer = document.getElementById('documentariesContainer');
+            documentariesContainer.innerHTML = '';
+            
+            websiteData.documentaries.forEach(doc => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                videoCard.innerHTML = `
+                    <div class="video-container">
+                        <iframe src="${doc.url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>${doc.title}</h3>
+                        <p>${doc.description}</p>
+                    </div>
+                `;
+                documentariesContainer.appendChild(videoCard);
+            });
+        }
+
+        // Helper function to format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Initial render of dynamic content
+        renderEvents();
+        renderLeaders();
+        renderDocumentaries();
 
         // Contact Form Submission - Opens email client with form data
         document.getElementById('sendMessageBtn').addEventListener('click', function() {
